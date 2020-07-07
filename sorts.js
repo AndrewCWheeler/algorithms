@@ -83,7 +83,7 @@ function selectionSort(arr) {
                 min = j;
             }
         }
-            if (min !== i){
+            if (min !==i){
                 let tmp = arr[i];
                 arr[i] = arr[min];
                 arr[min] = tmp;
@@ -92,3 +92,29 @@ function selectionSort(arr) {
     return arr; 
 }
 console.log(selectionSort(arr));
+
+
+// Write a function that performs an insertion sort.
+// The way insertion sort works is you loop through each index i 
+// and at each i, we should have arr[0] through arr[i-1] be sorted.
+// Then at i, we "insert" that element wherever it belongs in [0, ..., i-1].
+
+var Array3 = [2,4,5,8,1,7,6,3]
+
+function insertionSort(arr) {
+    for (var i = 0; i < arr.length-1; i++) {
+        var host = i;
+        var guest = i+1;
+        while (arr[guest] < arr[host]) {
+            var temp = arr[guest];
+            arr[guest] = arr[host];
+            arr[host] = temp;
+            host--;
+            guest--;
+        }
+    }
+    return arr;
+    }
+
+console.log(insertionSort(Array3));
+
