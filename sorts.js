@@ -183,8 +183,6 @@ console.log(mergeSorter(list)); // [ 1, 2, 2, 3, 3, 3, 5, 6, 7, 8 ]
 // and those less than that element are to its left.
 
 var Array6 = [2, 4, 5, 8, 1, 7, 6, 3];
-console.log("This is the array before partition:");
-console.log(Array6);
 
 function partition(arr, left = 0, right = arr.length - 1) {
   let pivot = right;
@@ -197,10 +195,7 @@ function partition(arr, left = 0, right = arr.length - 1) {
     }
   }
   [arr[i], arr[pivot]] = [arr[pivot], arr[i]];
-  console.log(
-    "This is the array after partition; 3 should be in the 'middle':"
-  );
-  console.log(arr);
+
   return i;
 }
 
@@ -209,33 +204,19 @@ console.log(partition(Array6));
 // Write an algorithm that performs quick sort. It will take an array, and potentially a left
 // index and right index. The left and right will have a default of 0 and the last index of the
 // array.
-
 // HINT: This will consist of a break case, 2 recursive calls, and a call
 // to the partition function (not necessarily in that order!!!!);
-function quickSort(arr, left = 0, right = arr.length - 1) {}
 
-// // *****************************
-// // First write the swap function, which is just a helper function to swap values of the array.
-// function swap(array, i, j) {
-//   var temp = array[i];
-//   array[i] = array[j];
-//   array[j] = temp;
-// }
+var Array7 = [2, 4, 5, 8, 1, 7, 6, 3];
+console.log("This is Array7 BEFORE quickSort:");
+console.log(Array7);
 
-// function quicksortLomuto(array, left, right) {
-//   // left-pointer would be the index of the first element which is 0 and right-pointer would be the index of the last element which would be (length -1).
-//   left = left || 0;
-//   right = right || array.length - 1;
+function quickSort(arr, left = 0, right = arr.length - 1) {
+  if (left >= right) return arr;
 
-//   var pivot = partitionLomuto(array, left, right);
-
-//   if (left < pivot - 1) {
-//     quicksortLomuto(array, left, pivot - 1);
-//   }
-
-//   if (right > pivot) {
-//     quicksortLomuto(array, pivot - 1, right);
-//   }
-
-//   return array;
-// }
+  let i = partition(arr, left, right);
+  quickSort(arr, left, i - 1);
+  return quickSort(arr, i + 1, right);
+}
+console.log("This is Array7 AFTER quickSort:");
+console.log(quickSort(Array7));
