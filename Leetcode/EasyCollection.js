@@ -95,38 +95,214 @@ const k = 2;
 
 const nums2 = [1, 2, 3, 4, 5, 6, 7];
 const k2 = 3;
-
+// This is very slow ...
 var rotate = function (nums, k) {
+  k %= nums.length;
   let temp = 0;
-  let holdK = nums[k];
-  let tempK = null;
-  if (k === nums.length || nums.length === 1) {
-    return nums;
-  }
-  if (k > nums.length) {
-    tempK = k - nums.length;
-    k = tempK;
-  }
-  if (k <= nums.length / 2) {
-    for (let i = 0; i < k; i++) {
-      temp = nums[i];
-      nums[i] = nums[nums.length - k + i];
-      nums[i + k] = temp;
-    }
-    if (nums.length / 2 > k) {
-      nums[k + k] = holdK;
+  let previous = 0;
+  for (let i = 0; i < k; i++) {
+    previous = nums[nums.length - 1];
+    for (let j = 0; j < nums.length; j++) {
+      temp = nums[j];
+      nums[j] = previous;
+      previous = temp;
     }
   }
-  if (k > nums.length / 2) {
-    for (let i = 0; i < k; i++) {
-      temp = nums[i];
-      nums[i] = nums[nums.length - k - 1];
-      nums[i + k] = temp;
-    }
-  }
-
   return nums;
 };
-console.log(rotate(nums, k));
-console.log(rotate(nums2, k2));
-console.log(rotate([1, 2, 3], 2));
+// console.log(rotate(nums, k));
+// console.log(rotate(nums2, k2));
+// console.log(rotate([1, 2, 3], 2));
+
+// Try to understand this one:
+
+var rotate2 = function (nums, k) {
+  k %= nums.length; // This means k = k % nums.length
+  console.log(k);
+  nums.reverse();
+  console.log(nums);
+  helper(nums, 0, k - 1);
+  helper(nums, k, nums.length - 1);
+};
+
+var helper = (arr, start, end) => {
+  while (start < end) {
+    let temp = arr[start];
+    arr[start++] = arr[end];
+    arr[end--] = temp;
+  }
+};
+
+// console.log(rotate2(nums, k));
+// console.log(rotate2(nums2, k2));
+// console.log(rotate2([1, 2, 3], 2));
+
+// Contains Duplicate
+
+// Given an array of integers, find if the array contains any duplicates.
+
+// Your function should return true if any value appears at least twice in the array, and it should return false if every element is distinct.
+
+// Example 1:
+
+// Input: [1,2,3,1]
+// Output: true
+// Example 2:
+
+// Input: [1,2,3,4]
+// Output: false
+// Example 3:
+
+// Input: [1,1,1,3,3,4,3,2,4,2]
+// Output: true
+
+const input1 = [1, 2, 3, 1];
+const input2 = [1, 2, 3, 4];
+
+var containsDuplicate = function (nums) {
+  // for (let i = 0; i < nums.length - 1; i++) {
+  //   for (let j = i + 1; j <= nums.length - 1; j++) {
+  //     console.log(`This is nums[i]: ${nums[i]}`);
+  //     console.log(`This is nums[j]: ${nums[j]}`);
+  //     if (nums[j] === nums[i]) {
+  //       return true;
+  //     }
+  //   }
+  // }
+  // return false;
+};
+
+// console.log(containsDuplicate(input1));
+// console.log(containsDuplicate(input2));
+
+// Single Number
+
+// Solution
+// Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+
+// Note:
+
+// Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+
+// Example 1:
+
+// Input: [2,2,1]
+// Output: 1
+// Example 2:
+
+// Input: [4,1,2,1,2]
+// Output: 4
+
+const arr5 = [2, 2, 1];
+const arr6 = [4, 1, 2, 1, 2];
+const arr7 = [-1, -1, -2];
+
+var singleNumber = function (nums) {
+  return nums.reduce((a, b) => a ^ b, 0);
+};
+
+// console.log(singleNumber(arr5));
+// console.log(singleNumber(arr6));
+// console.log(singleNumber(arr7));
+
+// Given two arrays, write a function to compute their intersection.
+
+// Example 1:
+
+// Input: nums1 = [1,2,2,1], nums2 = [2,2]
+// Output: [2,2]
+
+// Example 2:
+
+// Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+// Output: [4,9]
+// Note:
+
+// Each element in the result should appear as many times as it shows in both arrays.
+// The result can be in any order.
+// Follow up:
+
+// What if the given array is already sorted? How would you optimize your algorithm?
+// What if nums1's size is small compared to nums2's size? Which algorithm is better?
+// What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+
+const numbers1 = [1, 2, 2, 1];
+const numbers2 = [2, 2];
+
+const numbers3 = [4, 9, 5];
+const numbers4 = [9, 4, 9, 8, 4];
+
+var intersect = function (nums1, nums2) {
+  const result = [];
+  let temp = [];
+  if (nums1.length > nums2.length) {
+    temp = nums1;
+    nums1 = nums2;
+    nums2 = temp;
+  }
+  for (const num of nums1) {
+    let idx = nums2.indexOf(num);
+    if (~idx) result.push(nums2.splice(idx, 1));
+  }
+  return result;
+};
+
+// console.log(intersect(numbers1, numbers2));
+
+// Plus One
+
+// Given a non-empty array of digits representing a non-negative integer, increment one to the integer.
+// The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.
+// You may assume the integer does not contain any leading zero, except the number 0 itself.
+
+// Example 1:
+
+// Input: digits = [1,2,3]
+// Output: [1,2,4]
+// Explanation: The array represents the integer 123.
+
+// Example 2:
+
+// Input: digits = [4,3,2,1]
+// Output: [4,3,2,2]
+// Explanation: The array represents the integer 4321.
+
+// Example 3:
+
+// Input: digits = [0]
+// Output: [1]
+
+// Constraints:
+
+// 1 <= digits.length <= 100
+// 0 <= digits[i] <= 9
+
+const digits = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3];
+
+var plusOne = function (digits) {
+  let i = digits.length - 1;
+  if (digits[i] !== 9) {
+    digits[i] = digits[i] + 1;
+    return digits;
+  } else {
+    while (digits[i] === 9) {
+      digits[i] = 0;
+      i--;
+      console.log(digits);
+      console.log(i);
+    }
+    if (i === -1) {
+      digits.push(0);
+      digits[i + 1] = 1;
+      return digits;
+    }
+    digits[i] = digits[i] + 1;
+    return digits;
+  }
+};
+console.log(plusOne(digits));
+
+// var plusOne2 = function (digits) {
+//   return (BigInt(digits.join('')) + 1n).toString().split('');
+// };
+// console.log(plusOne2(digits));
