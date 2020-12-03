@@ -357,38 +357,19 @@ const board = [
 // board[i][j] is a digit or '.'.
 
 const isValidSudoku = (board) => {
-  for (let i = 0; i < board.length; i++) {
-    let rowMap = {}; 
-    let colMap = {}; 
-    let gridMap = {}; 
-    for (let j=0; j<board.length; j++){
-      // row validation
-      if (board[i][j]!=='.'&& rowMap[board[i][j]]){
-        return false; 
-      } else {
-        rowMap[board[i][j]] = true; 
-      }
-      // col validation
-      if (board[j][i]!='.' && colMap[board[j][i]]){
-        return false; 
-      } else {
-        colMap[board[j][i]] = true; 
-      }
-      // 3*3 grid validation
-      let rowIndex = Math.floor(3*(i/3));
-      let colIndex = Math.floor(3*(i%3));
-      console.log(rowIndex);
-      console.log(colIndex); 
-
-      if (board[rowIndex+Math.floor(j/3)][colIndex+Math.floor(j%3)] !='.' && gridMap[board[rowIndex+Math.floor(j/3)][colIndex+Math.floor(j%3)]]){
-        return false;
-      } else {
-        gridMap[board[rowIndex+Math.floor(j/3)][colIndex+Math.floor(j%3)]] = true; 
-      }
-
-      }
+  let map = {};
+  let temp = 0;
+  for(let i=0; i<9; i++) {
+    for(let j=0; j<9; j++){
+      temp = board[i][j];
+      if (temp === '.') continue;
+      if (map['i' + i + temp] || map['j' + j + temp] || map['b' + Math.floor(i/3) + Math.floor(j/3) + temp]) return false;
+      map['i' + i + temp] = 1;
+      map['j' + j + temp] = 1;
+      map['b' + Math.floor(i/3) + Math.floor(j/3) + temp] = 1;
     }
-    return true; 
-  };
+  }
+  return true;
+};
 
 console.log(isValidSudoku(board));
