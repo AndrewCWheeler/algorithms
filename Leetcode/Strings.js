@@ -80,4 +80,49 @@ const reverse = x => {
 }
 
 
-console.log(reverse(-334567));
+// console.log(reverse(-334567));
+
+
+// FIRST UNIQUE CHARACTER IN A STRING
+
+// Given a string, find the first non-repeating character in it and return its index. If it doesn't exist, return -1.
+
+// Examples:
+
+// s = "leetcode"
+// return 0.
+
+// return 2.
+
+s = "loveleetcode"
+
+const firstUniqChar = s => {
+  const obj = {};
+  for (let i = 0; i < s.length; i++) {
+    if (obj.hasOwnProperty(s[i])) {
+      obj[s[i]] += 1;
+    } else {
+      obj[s[i]] = 1;
+    }
+  }
+  for (let i = 0; i < s.length; i++) {
+    if (obj[s[i]] === 1) {
+      return i;
+    }
+  }
+  return -1;
+}
+console.log(firstUniqChar(s));
+
+// const firstUniqChar2 = s => {
+const firstUniqChar2 = s => {
+  for(let i=0; i<s.length; i++){
+    let char = s.charAt(i)
+    if(s.indexOf(char) === s.lastIndexOf(char)){
+      return i;
+    }
+  }
+  return -1;
+};
+
+console.log(firstUniqChar2(s));
