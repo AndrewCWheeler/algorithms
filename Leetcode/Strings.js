@@ -112,7 +112,7 @@ const firstUniqChar = s => {
   }
   return -1;
 }
-console.log(firstUniqChar(s));
+// console.log(firstUniqChar(s));
 
 // const firstUniqChar2 = s => {
 const firstUniqChar2 = s => {
@@ -125,4 +125,71 @@ const firstUniqChar2 = s => {
   return -1;
 };
 
-console.log(firstUniqChar2(s));
+// console.log(firstUniqChar2(s));
+
+
+// VALID ANAGRAM
+
+// Given two strings s and t , write a function to determine if t is an anagram of s.
+
+// Example 1:
+
+// Input: s = "anagram", t = "nagaram"
+// Output: true
+// Example 2:
+
+// Input: s = "rat", t = "car"
+// Output: false
+// Note:
+// You may assume the string contains only lowercase alphabets.
+
+// Follow up:
+// What if the inputs contain unicode characters? How would you adapt your solution to such case?
+
+const isAnagram = (s,t) => {
+  // Edge case, comparing string lengths:
+  if (s.length !== t.length){
+    return false;
+  }
+  // Convert each string to an array, then sort the array in ascending order:
+  let first = s.split('').sort();
+  let second = t.split('').sort();
+  // Compare each indexed value in both arrays. Return false if any do not match. Otherwise, return true.
+  for (let i=0; i < first.length; i++){
+    if (first[i] !== second[i]){
+      return false;
+    }
+  }
+  return true;
+}
+console.log(isAnagram('rat', 'car'));
+
+
+var isAnagram2 = function(s, t) {
+  if(s.length !== t.length){
+      return false;
+  }
+  const stringToObj = (str) => {
+    let obj = {};
+    for(let i = 0; i<str.length;i++){
+      if(obj[str[i]] === undefined){
+        obj[str[i]] = 1;
+      }else{
+        obj[str[i]]++
+      }
+    }
+    return obj;
+  }
+
+  let sObj = stringToObj(s);
+  let tObj = stringToObj(t);
+  
+  for(let char in sObj){
+    if(sObj[char] !== tObj[char]){
+      return false;
+    }
+  }
+  return true;
+};
+
+console.log(isAnagram2('rat', 'car'));
