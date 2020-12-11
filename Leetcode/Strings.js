@@ -162,7 +162,7 @@ const isAnagram = (s,t) => {
   }
   return true;
 }
-console.log(isAnagram('rat', 'car'));
+// console.log(isAnagram('rat', 'car'));
 
 
 var isAnagram2 = function(s, t) {
@@ -192,4 +192,61 @@ var isAnagram2 = function(s, t) {
   return true;
 };
 
-console.log(isAnagram2('rat', 'car'));
+// console.log(isAnagram2('rat', 'car'));
+
+
+var isAnagram3 = function(s, t) {
+  if (s.length !== t.length) { return false; }
+  
+  const charSet = new Array(26).fill(0);
+  
+  for(let i = 0; i < s.length; i++) {
+      charSet[s.charCodeAt(i) - 97]++;
+      charSet[t.charCodeAt(i) - 97]--;
+  }
+  
+  for(let i = 0; i < charSet.length; i++){
+      if(charSet[i] !== 0){ return false; }
+  }
+  
+  return true;
+};
+
+// console.log(isAnagram3('rat', 'car'));
+
+
+// VALID PALINDROME 
+
+// Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
+
+// Note: For the purpose of this problem, we define empty string as valid palindrome.
+
+// Example 1:
+
+const example1 = "A man, a plan, a canal: Panama"
+// Output: true
+// Example 2:
+
+const example2 = "race a car"
+// Output: false
+var isPalindrome = function(string) {
+  // Normalize string:
+  let findUpperCase = /[A-Z]/g;
+  let caseLowered = string.replace(findUpperCase, function(match) {
+    return match.toLowerCase();
+  })
+  let newString = caseLowered.replace(/[^0-9a-z]/gi, '');
+  // Convert string to array:
+  let arr = newString.split('');
+  // Compare array start and end moving incrementally toward the halfway point. 
+  let end = arr.length - 1; 
+  for (let start = 0; start < arr.length / 2; start++){
+    if (arr[start] !== arr[end]){
+      return false;
+    }
+    end--;
+  }
+  return true;
+};
+
+console.log(isPalindrome(example1));
