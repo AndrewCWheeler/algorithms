@@ -249,4 +249,157 @@ var isPalindrome = function(string) {
   return true;
 };
 
-console.log(isPalindrome(example1));
+// console.log(isPalindrome(example1));
+
+
+// CONVERT STRING TO INTEGER
+
+// Implement atoi which converts a string to an integer.
+
+// The function first discards as many whitespace characters as necessary until the first non-whitespace character is found. Then, starting from this character takes an optional initial plus or minus sign followed by as many numerical digits as possible, and interprets them as a numerical value.
+
+// The string can contain additional characters after those that form the integral number, which are ignored and have no effect on the behavior of this function.
+
+// If the first sequence of non-whitespace characters in str is not a valid integral number, or if no such sequence exists because either str is empty or it contains only whitespace characters, no conversion is performed.
+
+// If no valid conversion could be performed, a zero value is returned.
+
+// Note:
+
+// Only the space character ' ' is considered a whitespace character.
+
+// Assume we are dealing with an environment that could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. If the numerical value is out of the range of representable values, 231 − 1 or −231 is returned.
+
+// Example 1:
+const str1 = "42"
+// Output: 42
+
+// Example 2:
+const str2 = "  -42"
+// Output: -42
+// Explanation: The first non-whitespace character is '-', which is the minus sign. Then take as many numerical digits as possible, which gets 42.
+
+// Example 3:
+const str3 = "4193 with words"
+// Output: 4193
+// Explanation: Conversion stops at digit '3' as the next character is not a numerical digit.
+
+// Example 4:
+const str4 = "words and 987"
+// Output: 0
+// Explanation: The first non-whitespace character is 'w', which is not a numerical digit or a +/- sign. Therefore no valid conversion could be performed.
+
+// Example 5:
+const str5 = "-91283472332"
+// Output: -2147483648
+// Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer. Thefore INT_MIN (−231) is returned.
+
+// Example 6: 
+const str6 = " -+12   "
+
+const str7 = "3.14159"
+
+// Constraints:
+
+// 0 <= s.length <= 200
+// s consists of English letters (lower-case and upper-case), digits, ' ', '+', '-' and '.'.
+
+
+const myAtoi = (s) => {
+  if (s === ''){
+    return 0;
+  }
+  let period = s.match(/.+\b\w+\b/g);
+  let secondCharCheck = s.trim();
+  if (secondCharCheck.length >= 2){
+    if (secondCharCheck[0].match(/\d/) && secondCharCheck[1] === '.'){
+      return parseInt(secondCharCheck[0]);
+    }
+    else if (!secondCharCheck[1].match(/\d/)){
+      return 0;
+    }
+  }
+  let negOrPos = s.match(/-+\b\w+\b/g || /++\b\w+\b/g);
+  let arr = s.match(/\b\w+\b/g);
+  let result = 0;
+  const valueIsNaN = (v) => {
+    return v !== v;
+  }
+  const legitimate = (n) => {
+    let lowest = Math.pow(-2, 31)
+    let highest = Math.pow(2, 31)-1;
+    if (n > lowest && n < highest){
+      return n;
+    } else if (n < lowest){
+      return lowest;
+    } else if (n > highest) {
+      return highest;
+    }
+  }
+  if (period) {
+    if (period[0][0] === '.') {
+    return 0;
+    }
+  }
+  if (negOrPos){
+    let result = parseInt(negOrPos[0])
+    if (valueIsNaN(result)){
+      return 0;
+    } else {
+      return legitimate(result);
+    }
+  }
+  else if (arr) {
+    if (arr[0][0].match(/\d+\b/) === false){
+      return 0;
+    } else {
+      let result = parseInt(arr[0]);
+      if (valueIsNaN(result)){
+        return 0;
+      } else {
+        return legitimate(result);
+      }
+    }
+  }
+  else return result;
+};
+
+// console.log(myAtoi(str7));
+
+const myAtoi2 = (str) => {
+  let i = 0;
+  let sign = 1;
+  let res = 0;
+  let INT_MAX = 2147483647;
+  let INT_MIN = - INT_MAX - 1;
+  
+  while (str[i] === ' ') i++;
+  
+  if (str[i] === '+' || str[i] === '-') {
+    sign = str[i] === '+' ? 1 : -1;
+    i++;
+  }
+  
+  while (str[i] >= '0' && str[i] <= '9') {
+    res = (res * 10) + (str[i] - 0);
+    if (sign === 1 && res > INT_MAX) return INT_MAX;
+    if (sign === -1 && res > INT_MAX + 1) return INT_MIN;
+    i++;
+  }
+  
+    return res * sign;
+}
+
+console.log(myAtoi2(str1));
+
+
+const myAtoi3 = (s) => {
+  let z = s.trim().split(new RegExp(/^[a-zA-Z\s].*?./g));
+  let k = parseInt(z.join(''));
+    
+  return z[0].length===0 || isNaN(k) ? 0
+            : k<(-2)**31 ? (-2)**31
+            : k>2**31 -1? 2**31-1
+            : k;
+    
+}
