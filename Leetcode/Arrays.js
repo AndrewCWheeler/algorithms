@@ -7,18 +7,18 @@
 // The outputs [4,2,3,1], [2,4,1,3], and [4,2,1,3] would also be accepted.
 
 var sortArrayByParity = function (A) {
-  let result = [];
-  for (let i = 0; i < A.length; i++) {
-    if (A[i] % 2 === 0) {
-      result.push(A[i]);
+    let result = [];
+    for (let i = 0; i < A.length; i++) {
+        if (A[i] % 2 === 0) {
+            result.push(A[i]);
+        }
     }
-  }
-  for (let i = 0; i < A.length; i++) {
-    if (A[i] % 2 !== 0) {
-      result.push(A[i]);
+    for (let i = 0; i < A.length; i++) {
+        if (A[i] % 2 !== 0) {
+            result.push(A[i]);
+        }
     }
-  }
-  return result;
+    return result;
 };
 // console.log(sortArrayByParity([3, 1, 2, 4]));
 
@@ -36,23 +36,23 @@ var sortArrayByParity = function (A) {
 // The length of input array is a positive integer and will not exceed 10,000
 
 var findMaxConsecutiveOnes = function (nums) {
-  let max = 0;
-  let current = 0;
+    let max = 0;
+    let current = 0;
 
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] == 1) {
-      current++;
-    } else {
-      if (current > max) {
-        max = current;
-      }
-      if (max >= nums.length / 2) {
-        return max;
-      }
-      current = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] == 1) {
+            current++;
+        } else {
+            if (current > max) {
+                max = current;
+            }
+            if (max >= nums.length / 2) {
+                return max;
+            }
+            current = 0;
+        }
     }
-  }
-  return Math.max(max, current);
+    return Math.max(max, current);
 };
 
 // console.log(findMaxConsecutiveOnes([1, 1]));
@@ -146,19 +146,19 @@ var findMaxConsecutiveOnes = function (nums) {
 // 1 <= nums[i] <= 10^5
 
 var findNumbers = function (nums) {
-  let count = 0;
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] >= 10 && nums[i] < 100) {
-      count++;
+    let count = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] >= 10 && nums[i] < 100) {
+            count++;
+        }
+        if (nums[i] >= 1000 && nums[i] < 10000) {
+            count++;
+        }
+        if (nums[i] >= 100000 && nums[i] < 1000000) {
+            count++;
+        }
     }
-    if (nums[i] >= 1000 && nums[i] < 10000) {
-      count++;
-    }
-    if (nums[i] >= 100000 && nums[i] < 1000000) {
-      count++;
-    }
-  }
-  return count;
+    return count;
 };
 
 // console.log(
@@ -185,12 +185,12 @@ var findNumbers = function (nums) {
 const A = [-4, -1, 0, 3, 10];
 
 const sortedSquares = A => {
-  let newArr = [];
-  for (let i = 0; i < A.length; i++) {
-    newArr.push(A[i] * A[i]);
-  }
-  newArr.sort((a, b) => a - b);
-  return newArr;
+    let newArr = [];
+    for (let i = 0; i < A.length; i++) {
+        newArr.push(A[i] * A[i]);
+    }
+    newArr.sort((a, b) => a - b);
+    return newArr;
 };
 
 // console.log(sortedSquares(A));
@@ -222,14 +222,14 @@ const sortedSquares = A => {
 const arr = [1, 0, 2, 3, 0, 4, 5, 0];
 
 var duplicateZeros = function (arr) {
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === 0) {
-      arr.splice(i + 1, 0, 0);
-      arr.pop();
-      i++;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
+            arr.splice(i + 1, 0, 0);
+            arr.pop();
+            i++;
+        }
+        console.log(arr);
     }
-    console.log(arr);
-  }
 };
 
 // console.log(duplicateZeros(arr));
@@ -263,13 +263,13 @@ var m = 3;
 var n = 3;
 
 var merge = function (nums1, m, nums2, n) {
-  const len = m + n;
-  nums1.splice(len - n, n);
-  for (let i = 0; i < n; i++) {
-    nums1.push(nums2[i]);
-  }
-  nums1.sort((a, b) => a - b);
-  return nums1;
+    const len = m + n;
+    nums1.splice(len - n, n);
+    for (let i = 0; i < n; i++) {
+        nums1.push(nums2[i]);
+    }
+    nums1.sort((a, b) => a - b);
+    return nums1;
 };
 
 // console.log(merge(nums1, m, nums2, n));
@@ -282,22 +282,22 @@ var m = 5;
 var n = 3;
 
 var merge2 = function (a, m, b, n) {
-  let i = m - 1,
-    j = n - 1,
-    c = a.length - 1;
+    let i = m - 1,
+        j = n - 1,
+        c = a.length - 1;
 
-  while (i >= 0 && j >= 0) {
-    if (a[i] >= b[j]) {
-      a[c--] = a[i--];
-    } else {
-      a[c--] = b[j--];
+    while (i >= 0 && j >= 0) {
+        if (a[i] >= b[j]) {
+            a[c--] = a[i--];
+        } else {
+            a[c--] = b[j--];
+        }
     }
-  }
 
-  while (c >= 0) {
-    a[c--] = i >= 0 ? a[i--] : b[j--];
-  }
-  return a;
+    while (c >= 0) {
+        a[c--] = i >= 0 ? a[i--] : b[j--];
+    }
+    return a;
 };
 
 // console.log(merge2(a, m, b, n));
@@ -346,13 +346,13 @@ var nums = [3, 2, 2, 3];
 var val = 3;
 
 var removeElement = function (nums, val) {
-  for (let i = 0; i < nums.length; i++) {
-    if (nums[i] === val) {
-      nums.splice(i, 1);
-      i--;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] === val) {
+            nums.splice(i, 1);
+            i--;
+        }
     }
-  }
-  return nums.length;
+    return nums.length;
 };
 
 // console.log(removeElement(nums, val));
@@ -398,15 +398,15 @@ var removeElement = function (nums, val) {
 var duplicateNums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
 
 var removeDuplicates = function (nums) {
-  let i = 0;
-  while (nums[i] <= nums.length) {
-    if (nums[i] === nums[i + 1]) {
-      nums.splice(i, 1);
-    } else {
-      i++;
+    let i = 0;
+    while (nums[i] <= nums.length) {
+        if (nums[i] === nums[i + 1]) {
+            nums.splice(i, 1);
+        } else {
+            i++;
+        }
     }
-  }
-  return nums.length;
+    return nums.length;
 };
 
 // console.log(removeDuplicates(duplicateNums));
@@ -448,25 +448,28 @@ arrayD = [-2, 0, 10, -19, 4, 6, -8];
 arrayE = [-20, 8, -6, -14, 0, -19, 14, 4];
 
 var checkIfExist = function (arr) {
-  if (arr.length < 2) {
-    return false;
-  } else {
-    for (let i = 0; i < arr.length; i++) {
-      console.log('****This is 1ST FOR LOOP arr[i]****: ' + arr[i]);
-      if (arr[i] === 0) {
-        i++;
-      }
-      for (let j = arr.length - 1; j >= 0; j--) {
-        console.log(
-          'This is arr[i]*2 compared to arr[j]: ' + arr[i] * 2 + ' ? ' + arr[j]
-        );
-        if (arr[j] === arr[i] * 2) {
-          return true;
+    if (arr.length < 2) {
+        return false;
+    } else {
+        for (let i = 0; i < arr.length; i++) {
+            console.log('****This is 1ST FOR LOOP arr[i]****: ' + arr[i]);
+            if (arr[i] === 0) {
+                i++;
+            }
+            for (let j = arr.length - 1; j >= 0; j--) {
+                console.log(
+                    'This is arr[i]*2 compared to arr[j]: ' +
+                        arr[i] * 2 +
+                        ' ? ' +
+                        arr[j]
+                );
+                if (arr[j] === arr[i] * 2) {
+                    return true;
+                }
+            }
         }
-      }
+        return false;
     }
-    return false;
-  }
 };
 // console.log(checkIfExist(arrayD));
 
@@ -502,31 +505,31 @@ const ex4 = [3, 7, 6, 4, 3, 0, 1, 0];
 const ex5 = [3, 6, 5, 6, 7, 6, 5, 3, 0];
 
 var validMountainArray = function (A) {
-  if (A.length < 3) {
-    console.log('Your array is not long enough.');
-    return false;
-  }
-  for (let i = 0; i < A.length; i++) {
-    if (A[i] === A[i + 1]) {
-      return false;
+    if (A.length < 3) {
+        console.log('Your array is not long enough.');
+        return false;
     }
-    if (A[0] > A[1]) {
-      return false;
+    for (let i = 0; i < A.length; i++) {
+        if (A[i] === A[i + 1]) {
+            return false;
+        }
+        if (A[0] > A[1]) {
+            return false;
+        }
+        if (A[A.length - 1] > A[A.length - 2]) {
+            return false;
+        }
+        if (A[i] < A[i - 1] && A[i + 1] > A[i]) {
+            return false;
+        }
+        // if (A[i] < A[i + 1] > A[i + 2] && A[i + 3] > A[i + 2]) {
+        //   return false;
+        // }
+        // if (A[i] < A[i + 1] > A[i + 2] && A[i + 3] === undefined) {
+        //   return false;
+        // }
     }
-    if (A[A.length - 1] > A[A.length - 2]) {
-      return false;
-    }
-    if (A[i] < A[i - 1] && A[i + 1] > A[i]) {
-      return false;
-    }
-    // if (A[i] < A[i + 1] > A[i + 2] && A[i + 3] > A[i + 2]) {
-    //   return false;
-    // }
-    // if (A[i] < A[i + 1] > A[i + 2] && A[i + 3] === undefined) {
-    //   return false;
-    // }
-  }
-  return true;
+    return true;
 };
 // console.log(validMountainArray(ex4));
 
@@ -547,22 +550,22 @@ var validMountainArray = function (A) {
 const arrB = [17, 18, 5, 4, 6, 1];
 
 var replaceElements = function (arr) {
-  if (arr.length === 1) {
-    arr[0] = -1;
-    return arr;
-  }
-  let max = arr[arr.length - 1];
-  arr[arr.length - 1] = -1;
-  let temp = 0;
-  for (let i = arr.length - 2; i >= 0; i--) {
-    temp = arr[i];
-    arr[i] = max;
-    if (max < temp) {
-      max = temp;
+    if (arr.length === 1) {
+        arr[0] = -1;
+        return arr;
     }
-  }
+    let max = arr[arr.length - 1];
+    arr[arr.length - 1] = -1;
+    let temp = 0;
+    for (let i = arr.length - 2; i >= 0; i--) {
+        temp = arr[i];
+        arr[i] = max;
+        if (max < temp) {
+            max = temp;
+        }
+    }
 
-  return arr;
+    return arr;
 };
 
 // console.log(replaceElements(arrB));
@@ -608,17 +611,17 @@ var replaceElements = function (arr) {
 let numsArray = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 4];
 
 var removeDuplicates = function (nums) {
-  if (nums === 0) {
-    return 0;
-  }
-  let j = 1;
-  for (let i = 1; i < nums.length; i++) {
-    if (nums[i] != nums[i - 1]) {
-      nums[j] = nums[i];
-      j++;
+    if (nums === 0) {
+        return 0;
     }
-  }
-  return j;
+    let j = 1;
+    for (let i = 1; i < nums.length; i++) {
+        if (nums[i] != nums[i - 1]) {
+            nums[j] = nums[i];
+            j++;
+        }
+    }
+    return j;
 };
 
 // console.log(removeDuplicates(numsArray));
@@ -641,20 +644,20 @@ var zeroArray = [0, 1, 0, 3, 12];
 var testCase = [1, 0, 1];
 
 var moveZeroes = function (nums) {
-  if (nums.length <= 1) {
-    return nums;
-  }
-  let walker = 0;
-  for (let runner = 1; runner < nums.length; runner++) {
-    if (nums[walker] === 0 && nums[runner] != 0) {
-      nums[walker] = nums[runner];
-      nums[runner] = 0;
-      walker++;
-    } else if (nums[walker] != 0) {
-      walker++;
+    if (nums.length <= 1) {
+        return nums;
     }
-  }
-  return nums;
+    let walker = 0;
+    for (let runner = 1; runner < nums.length; runner++) {
+        if (nums[walker] === 0 && nums[runner] != 0) {
+            nums[walker] = nums[runner];
+            nums[runner] = 0;
+            walker++;
+        } else if (nums[walker] != 0) {
+            walker++;
+        }
+    }
+    return nums;
 };
 // console.log(moveZeroes(testCase));
 
@@ -693,14 +696,14 @@ var heights = [1, 1, 4, 2, 1, 3];
 var heights2 = [5, 1, 2, 3, 4];
 
 var heightChecker = function (heights) {
-  let count = 0;
-  let mirror = [...heights].sort((a, b) => a - b);
-  for (let i = 0; i < heights.length; i++) {
-    if (mirror[i] != heights[i]) {
-      count++;
+    let count = 0;
+    let mirror = [...heights].sort((a, b) => a - b);
+    for (let i = 0; i < heights.length; i++) {
+        if (mirror[i] != heights[i]) {
+            count++;
+        }
     }
-  }
-  return count;
+    return count;
 };
 // console.log(heightChecker(heights2));
 
@@ -732,24 +735,24 @@ var heightChecker = function (heights) {
 const thirdMaxArr = [5, 2, 2];
 
 var thirdMax = function (nums) {
-  let count = 0;
-  let sorted = [...nums].sort((a, b) => a - b);
-  let max3 = null;
-  const originalMax = sorted[sorted.length - 1];
-  if (sorted.length <= 2) {
-    return originalMax;
-  }
-  for (let i = sorted.length - 2; i >= 0; i--) {
-    if (sorted[i + 1] > sorted[i]) {
-      max3 = sorted[i];
-      count++;
+    let count = 0;
+    let sorted = [...nums].sort((a, b) => a - b);
+    let max3 = null;
+    const originalMax = sorted[sorted.length - 1];
+    if (sorted.length <= 2) {
+        return originalMax;
     }
-    if (count === 2) {
-      return max3;
-    } else if (i === 0 && count < 2) {
-      return originalMax;
+    for (let i = sorted.length - 2; i >= 0; i--) {
+        if (sorted[i + 1] > sorted[i]) {
+            max3 = sorted[i];
+            count++;
+        }
+        if (count === 2) {
+            return max3;
+        } else if (i === 0 && count < 2) {
+            return originalMax;
+        }
     }
-  }
 };
 // console.log(thirdMax(thirdMaxArr));
 
@@ -773,39 +776,142 @@ var thirdMax = function (nums) {
 var disappearingArray = [2, 2];
 
 var findDisappearedNumbers = function (nums) {
-  if (nums.length === 0) {
-    return nums;
-  }
-  let result = [];
-  let difference = 0;
-  let sorted = [...nums].sort((a, b) => a - b);
-  console.log(sorted);
-  if (sorted[sorted.length - 1] === sorted.length && sorted[0] != 1) {
-    difference = sorted[0] - 1;
-    while (difference >= 1) {
-      result.push(difference);
-      difference--;
+    if (nums.length === 0) {
+        return nums;
     }
-  }
-  for (let i = sorted.length - 1; i >= 0; i--) {
-    if (sorted[i] - sorted[i - 1] >= 2) {
-      difference = sorted[i] - sorted[i - 1];
-      while (difference >= 2) {
-        result.push(sorted[i] - difference + 1);
-        difference--;
-      }
+    let result = [];
+    let difference = 0;
+    let sorted = [...nums].sort((a, b) => a - b);
+    console.log(sorted);
+    if (sorted[sorted.length - 1] === sorted.length && sorted[0] != 1) {
+        difference = sorted[0] - 1;
+        while (difference >= 1) {
+            result.push(difference);
+            difference--;
+        }
     }
-  }
-  if (sorted.length - sorted[sorted.length - 1] >= 2) {
-    difference = sorted.length - sorted[sorted.length - 1];
-    while (difference >= 2) {
-      result.push(sorted.length - difference + 1);
-      difference--;
+    for (let i = sorted.length - 1; i >= 0; i--) {
+        if (sorted[i] - sorted[i - 1] >= 2) {
+            difference = sorted[i] - sorted[i - 1];
+            while (difference >= 2) {
+                result.push(sorted[i] - difference + 1);
+                difference--;
+            }
+        }
     }
-  }
-  if (sorted[sorted.length - 1] != sorted.length) {
-    result.push(sorted.length);
-  }
-  return result;
+    if (sorted.length - sorted[sorted.length - 1] >= 2) {
+        difference = sorted.length - sorted[sorted.length - 1];
+        while (difference >= 2) {
+            result.push(sorted.length - difference + 1);
+            difference--;
+        }
+    }
+    if (sorted[sorted.length - 1] != sorted.length) {
+        result.push(sorted.length);
+    }
+    return result;
 };
-console.log(findDisappearedNumbers(disappearingArray));
+// console.log(findDisappearedNumbers(disappearingArray));
+
+// Rotate Image
+
+// You are given an n x n 2D matrix representing an image, rotate the image by 90 degrees (clockwise).
+// You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
+
+// Example 1:
+// Input:
+let matrix1 = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+];
+//
+// Output = [
+//   [7, 4, 1],
+//   [8, 5, 2],
+//   [9, 6, 3],
+// ];
+
+// Example 2:
+// Input:
+let matrix2 = [
+    [5, 1, 9, 11],
+    [2, 4, 8, 10],
+    [13, 3, 6, 7],
+    [15, 14, 12, 16],
+];
+//
+// Output = [
+//   [15, 13, 2, 5],
+//   [14, 3, 4, 1],
+//   [12, 6, 8, 9],
+//   [16, 7, 10, 11],
+// ];
+
+// Example 3:
+let matrix3 = [[1]];
+// Output = [[1]]
+
+// Example 4:
+let matrix4 = [
+    [1, 2],
+    [3, 4],
+];
+// Output = [
+//   [3, 1],
+//   [4, 2],
+// ];
+
+// Constraints:
+
+// matrix.length == n
+// matrix[i].length == n
+// 1 <= n <= 20
+// -1000 <= matrix[i][j] <= 1000
+// JavaScript
+
+//  * @param {number[][]} matrix
+//  * @return {void} Do not return anything, modify matrix in-place instead.
+// let matrix1 = [
+//   [1, 2, 3],
+//   [4, 5, 6],
+//   [7, 8, 9],
+// ];
+// Output = [
+//   [7, 4, 1],
+//   [8, 5, 2],
+//   [9, 6, 3],
+// ];
+
+// a = x;
+// x = y;
+// y = a;
+
+let matrix5 = [
+    [11, 12, 13, 14, 15],
+    [16, 17, 18, 19, 20],
+    [21, 22, 23, 24, 25],
+    [26, 27, 28, 29, 30],
+    [31, 32, 33, 34, 35],
+];
+
+const rotate = matrix => {
+    let n = matrix.length;
+    for (let i = 0; i < Math.floor((n + 1) / 2); i++) {
+        for (let j = 0; j < Math.floor(n / 2); j++) {
+            // initially set temp equal to "bottom left":
+            let temp = matrix[n - 1 - j][i];
+            // set "bottom left" equal to "bottom right":
+            matrix[n - 1 - j][i] = matrix[n - 1 - i][n - j - 1];
+            // set "bottom right" equal to "top right"
+            matrix[n - 1 - i][n - j - 1] = matrix[j][n - 1 - i];
+            // set "top right" equal to "top left":
+            matrix[j][n - 1 - i] = matrix[i][j];
+            // set "top left" equal to temp:
+            matrix[i][j] = temp;
+        }
+    }
+};
+
+// console.log(rotate2(matrix5));
+// console.log(rotate2(matrix1));

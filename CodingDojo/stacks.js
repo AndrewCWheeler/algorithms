@@ -2,13 +2,11 @@
 class SLNode {
     // The constructor is built to take 1 parameter, being the value of the node we want
     // to create
-    constructor(val, next) {
+    constructor(val) {
         // This is the node's actual value
-        this.val = val === undefined ? 0 : val;
-        // this.val = val;
+        this.value = val;
         // And this indicates what is next after the current node.
-        this.next = next === undefined ? null : next;
-        // this.next = null;
+        this.next = null;
     }
 }
 
@@ -18,118 +16,6 @@ class SLList {
         // This is the beginning of the singly linked list
         this.head = null;
     }
-
-    // Write a method that will remove duplicate values from a sorted singly linked list.
-
-    // EXAMPLE: 1 -> 1 -> 2 -> 3 -> 3 -> 4 -> 5 -> would return 1 -> 2 -> 3 -> 4 -> 5 ->
-    removeDupesSorted() {
-        if (this.isEmpty()) {
-            return;
-        }
-        let curr = this.head;
-        while (curr.next !== null) {
-            if (curr.value === curr.next.value) {
-                curr.next = curr.next.next;
-            } else {
-                curr = curr.next;
-            }
-        }
-    }
-
-    // Write a method that will remove all negative numbers from a singly linked list.
-    // Pretty self explanatory.
-    removeNegatives() {
-        if (this.isEmpty()) {
-            return;
-        }
-
-        let curr = this.head;
-
-        while (curr !== null && curr.value < 0) {
-            this.head = curr.next;
-            curr = this.head;
-        }
-        while (curr !== null && curr.next != null) {
-            if (curr.next.value < 0) {
-                curr.next = curr.next.next;
-            } else {
-                curr = curr.next;
-            }
-        }
-    }
-
-    // Write a method that will return a boolean based on whether
-    // or not the singly linked list has a loop.
-
-    // HINT: Captain America, The Winter Soldier
-    // "On your left!"
-    hasLoop() {
-        // First, check to see if the list is empty, or only 1 element.
-        if (this.isEmpty() || this.head.next == null) {
-            return false;
-        }
-        // Set our walker to the head node, and runner to the 2nd node
-        let walker = this.head;
-        let runner = walker.next;
-
-        // We're going to move walker by 1 node, and runner by 2 node forever (???)
-        while (runner !== null && runner.next !== null) {
-            // Check to see if walker and runner have met
-            if (walker == runner) {
-                // If so, we have a loop!
-                return true;
-            }
-            // Move walker by 1 node
-            walker = walker.next;
-            // Move runner by 2 nodes
-            runner = runner.next.next;
-        }
-        // If we broke out of the while loop, we don't have
-        return false;
-    }
-
-    // Write a method that will reverse the singly linked list.
-    // Note that this will entail reversing the pointers of each node to its
-    // previous node, and setting what WAS the last node to be the new head.
-
-    // I STRONGLY encourage attempting to use recursion for this method. If you
-    // choose not to, this task will require three pointers.
-    reverse() {
-        if (this.isEmpty()) {
-            console.log('Nothing to reverse');
-            return this;
-        }
-        let walker = null;
-        let runner = this.head;
-        let next = runner.next;
-        while (runner != null) {
-            runner.next = walker;
-            walker = runner;
-            runner = next;
-            if (runner != null) next = runner.next;
-        }
-        this.head = walker;
-        return this;
-    }
-    // Recursive solution!
-    // rReverse(runner = this.head, prev = null) {
-    //   console.log('*****RUNNER*****');
-    //   console.log(runner);
-    //   console.log('');
-    //   console.log('PREV');
-    //   console.log(prev);
-    //   if (runner == null) {
-    //     console.log(`if check met. runner is null: ${runner}`);
-    //     this.head = prev;
-    //     console.log(`this.head: ${this.head.val}`);
-    //     return;
-    //   }
-    //   this.rReverse(runner.next, runner);
-    //   console.log('*****RUNNER.NEXT*****');
-    //   console.log(runner.next);
-    //   runner.next = prev;
-    //   return;
-    // }
 
     // Write a method that will return the second to last node in the singly linked list.
 
@@ -461,149 +347,67 @@ class SLList {
         console.log(string);
         return this;
     }
+}
 
-    // *** BEGIN LEETCODE ***
-    // 1. Delete Node in a Linked List
+// This is the class for a Stack where everything is built using methods
+// from the SLL class we've been working with
+class Stack {
+    constructor() {
+        this.data = new SLList();
+    }
 
-    // Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list, instead you will be given access to the node to be deleted directly.
-
-    // It is guaranteed that the node to be deleted is not a tail node in the list.
-
-    // Example 1:
-    // Input: head = [4,5,1,9], node = 5
-    // Output: [4,1,9]
-    // Explanation: You are given the second node with value 5, the linked list should become 4 -> 1 -> 9 after calling your function.
-
-    // Example 2:
-    // Input: head = [4,5,1,9], node = 1
-    // Output: [4,5,9]
-    // Explanation: You are given the third node with value 1, the linked list should become 4 -> 5 -> 9 after calling your function.
-
-    // Example 3:
-    // Input: head = [1,2,3,4], node = 3
-    // Output: [1,2,4]
-
-    // Example 4:
-    // Input: head = [0,1], node = 0
-    // Output: [1]
-
-    // Example 5:
-    // Input: head = [-3,5,-99], node = -3
-    // Output: [5,-99]
-
-    // Constraints:
-    // The number of the nodes in the given list is in the range [2, 1000].
-    // -1000 <= Node.val <= 1000
-    // The value of each node in the list is unique.
-    // The node to be deleted is in the list and is not a tail node
-
-    /**
-     * Definition for singly-linked list.
-     * function ListNode(val) {
-     *     this.val = val;
-     *     this.next = null;
-     * }
-     */
-    /**
-     * @param {ListNode} node
-     * @return {void} Do not return anything, modify node in-place instead.
-     */
-    deleteNode(value) {
-        let walker = this.head;
-        let runner = this.head.next;
-        while (runner !== null) {
-            if (runner.value == value) {
-                walker.next = runner.next;
-                return this;
-            }
-            walker = runner;
-            runner = runner.next;
-        }
-        // this.value.next = this.value.next.next;
-        // node.val = node.next.val;
-        // node.next = node.next.next;
+    // Write a method to push a value into our stack using the methods we've built
+    // in our singly linked list class
+    push(value) {
+        this.data.addToFront(value);
         return this;
     }
 
-    // 2. Remove nth node from the end of a linked list
-    // Given the head of a linked list, remove the nth node from the end of the list and return its head.
-
-    // Follow up: Could you do this in one pass?
-
-    // Example 1:
-    // head = [1,2,3,4,5], n = 2
-    // Output: [1,2,3,5]
-
-    // Example 2:
-    // head = [1], n = 1
-    // Output: []
-
-    // Example 3:
-    // head = [1,2], n = 1
-    // Output: [1]
-
-    // Constraints:
-
-    // The number of nodes in the list is sz.
-    // 1 <= sz <= 30
-    // 0 <= Node.val <= 100
-    // 1 <= n <= sz
-
-    removeNthFromEnd(n) {
-        let dummy = new SLNode(0);
-        dummy.next = this.head;
-        let length = 0;
-        let first = this.head;
-        while (first != null) {
-            length++;
-            first = first.next;
-        }
-        length -= n;
-        first = dummy;
-        while (length > 0) {
-            length--;
-            first = first.next;
-        }
-        first.next = first.next.next;
-        return dummy.next;
+    // Write a method that will pop a value out of our stack using the methods
+    // we've built in our singly linked list class
+    pop() {
+        return this.removeFromFront();
     }
 
-    // Given the head of a singly linked list, reverse the list, and return the reversed list.
-
-    // Example 1:
-    // Input: head = [1,2,3,4,5]
-    // Output: [5,4,3,2,1]
-
-    // Example 2:
-    // Input: head = [1,2]
-    // Output: [2,1]
-
-    // Example 3:
-    // Input: head = []
-    // Output: []
-
-    // Constraints:
-    // The number of nodes in the list is the range [0, 5000].
-    // -5000 <= Node.val <= 5000
-
-    // Follow up: A linked list can be reversed either iteratively or recursively. Could you implement both?
-    // This works only on Leetcode:
-    reverseList(head) {
-        let prev = null;
-        let curr = head;
-        while (curr != null) {
-            let nextTemp = curr.next;
-            curr.next = prev;
-            prev = curr;
-            curr = nextTemp;
+    // Write a method that will return the value of the node on the top of the stack
+    peek() {
+        if (this.data.isEmpty()) {
+            console.log('empty stack!');
+            return this;
         }
-        return prev;
+        let answer = this.data.head.value;
+        return answer;
+    }
+
+    // Write a method that will return a boolean based on whether or not the stack
+    // is empty using the methods from our singly linked list class
+    youEmpty() {
+        if (this.data.isEmpty()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Write a method that will return how many elements are in our stack.
+    size() {
+        let runner = this.data.head;
+        let count = 0;
+        while (runner != null) {
+            runner = runner.next;
+            count++;
+        }
+        return count;
     }
 }
 
-let myList = new SLList();
-
-myList.addToBack(1).addToBack(2).addToBack(3).addToBack(4).addToBack(5);
-console.log(myList);
-myList.reverseList(myList[0]);
-console.log(myList);
+let myStack = new Stack();
+myStack.push(7);
+myStack.push(8);
+myStack.push(9);
+myStack.data.printList();
+myStack.pop();
+myStack.data.printList();
+console.log(myStack.peek());
+console.log(myStack.youEmpty());
+console.log(myStack.size());
