@@ -183,3 +183,60 @@ const maxProfit = prices => {
 };
 
 console.log(maxProfit(pricesArr));
+
+// MAXIMUM SUBARRAY
+
+// Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
+
+// Example 1:
+const nums = [-2];
+// Output: 6
+// Explanation: [4,-1,2,1] has the largest sum = 6.
+
+// Example 2:
+// Input: nums = [1]
+// Output: 1
+
+// Example 3:
+// Input: nums = [5,4,-1,7,8]
+// Output: 23
+
+// Constraints:
+
+// 1 <= nums.length <= 3 * 104
+// -105 <= nums[i] <= 105
+
+// Follow up: If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
+
+/**
+
+ * @param {number[]} nums
+
+ * @return {number}
+
+ */
+
+const maxSubArray = nums => {
+    let curr = -Infinity;
+    let max = -Infinity;
+    for (let i = 0; i < nums.length; i++) {
+        curr = Math.max(0, curr);
+        curr += nums[i];
+        max = Math.max(max, curr);
+    }
+    return max;
+};
+
+console.log(maxSubArray(nums));
+
+// My Explanation for comprehension:
+// The key to this problem is understanding the role of negative numbers. If you add a negative number to another negative number, it will always be worse (or lower) than if you had a single negative number. However, if a negative number is sandwiched between other positive numbers, it is possible that the max contiguous sub array will contain this negative number, since the numbers surrounding could offset what it subtracts.
+// Create two variables, currSum and maxSum, and set both = -Infinity. The value to return will be maxSum. currSum will be redefined each time through the loop. If at any point it's value is brought below zero, it will be reset to zero. This will ensure no negative numbers are added to negative numbers. The last comparison is maxSum compared to currSum, always keeping track of the maximum sum as the for loop runs.
+
+// Big O Analysis:
+// Time: O(n)
+// A simple linear scan through an array.
+// Space: O(1)
+// No memory does not scale based on input.
+
+// Reference: https://medium.com/@silasburger/maximum-subarray-leetcode-javascript-walkthrough-484b060c1bba

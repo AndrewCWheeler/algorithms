@@ -40,7 +40,16 @@ const sumVals = arr => {
   }
   return sum;
 };
-// console.log(sumVals([2, 4, 5, 6]));
+console.log(sumVals([2, 4, 5, 6]));
+
+const sumValues = arr => {
+  let result = 0;
+  arr.forEach(a => {
+    result += a;
+  });
+  return result;
+};
+console.log(sumValues([1, 2, 5]));
 
 // import React, { useState, useEffect } from 'react';
 
@@ -57,9 +66,9 @@ const maxNum = arr => {
   return max;
 };
 
-console.log(maxNum([-2, 3, 6, 3, 1]));
-maxNum = 7;
-console.log(maxNum);
+// console.log(maxNum([-2, 3, 6, 3, 1]));
+
+// console.log(maxNum);
 
 // 6. Given an array with multiple values, write a function that returns the average of the values in the array. (e.g. for [1,3,5,7,20] average is 7.2)
 const avg = arr => {
