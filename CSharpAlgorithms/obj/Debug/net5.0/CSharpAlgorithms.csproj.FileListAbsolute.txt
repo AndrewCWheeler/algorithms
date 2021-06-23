@@ -1,0 +1,15 @@
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/bin/Debug/net5.0/CSharpAlgorithms.deps.json
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/bin/Debug/net5.0/CSharpAlgorithms.runtimeconfig.json
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/bin/Debug/net5.0/CSharpAlgorithms.runtimeconfig.dev.json
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/bin/Debug/net5.0/CSharpAlgorithms.dll
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/bin/Debug/net5.0/ref/CSharpAlgorithms.dll
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/bin/Debug/net5.0/CSharpAlgorithms.pdb
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.csprojAssemblyReference.cache
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.GeneratedMSBuildEditorConfig.editorconfig
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.AssemblyInfoInputs.cache
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.AssemblyInfo.cs
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.csproj.CoreCompileInputs.cache
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.dll
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/ref/CSharpAlgorithms.dll
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.pdb
+/Users/andrew/Coding/Algorithms/CSharpAlgorithms/obj/Debug/net5.0/CSharpAlgorithms.genruntimeconfig.cache

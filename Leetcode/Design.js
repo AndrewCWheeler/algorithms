@@ -27,6 +27,8 @@
 // All the elements of nums are unique.
 // At most 5 * 104 calls will be made to reset and shuffle.
 
+// Hint #1:
+// The solution expects that we always use the original array to shuffle() else some of the test cases fail. (Credits; @snehasingh31)
 /**
  * @param {number[]} nums
  */
@@ -34,7 +36,7 @@
 let nums = [1, 2, 3];
 
 var Solution = function (nums) {
-  console.log(nums);
+  this.nums = nums;
 };
 
 /**
@@ -42,7 +44,8 @@ var Solution = function (nums) {
  * @return {number[]}
  */
 Solution.prototype.reset = function () {
-  console.log();
+  const copy = this.nums;
+  return copy;
 };
 
 /**
@@ -50,10 +53,55 @@ Solution.prototype.reset = function () {
  * @return {number[]}
  */
 Solution.prototype.shuffle = function () {
-  return;
+  let s = [];
+  this.nums.forEach((val, key) => s[key] = val);
+  let m = s.length,
+    t,
+    i;
+  // While elements to shuffle remain...
+  while (m) {
+    // Pick a remaining element...
+    i = Math.floor(Math.random() * m--);
+
+    // Then swap it with the current element...
+    t = s[m];
+    s[m] = s[i];
+    s[i] = t;
+  }
+  return s;
 };
 
 //  * Your Solution object will be instantiated and called as such:
 var obj = new Solution(nums);
 var param_1 = obj.reset();
 var param_2 = obj.shuffle();
+
+
+var Solution = function(nums) {
+  // hold nums in Solution
+  this.nums = nums;
+  this.orig = [...this.nums]
+};
+
+Solution.prototype.reset = function() {
+  this.nums = this.orig
+  return this.nums;
+};
+
+Solution.prototype.shuffle = function() {
+  // create a copy of this.nums, shuffle it, and return it
+  let shuffled = []
+  
+  const shuffled = this.nums.slice();
+
+  // swap elements with random elements
+  for (let i = 0; i < shuffled.length; i++) {
+      let randInt = Math.floor((Math.random()) * (shuffled.length));
+      let tmp = shuffled[i];
+      shuffled[i] = shuffled[randInt];
+      shuffled[randInt] = tmp;
+  }
+      
+  
+  return shuffled;
+};

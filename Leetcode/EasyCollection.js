@@ -57,7 +57,7 @@ var maxProfit = function (prices) {
   return maxprofit;
 };
 
-// console.log(maxProfit(prices));
+console.log(maxProfit(prices));
 
 // Rotate Array
 
@@ -359,17 +359,22 @@ const board = [
 const isValidSudoku = (board) => {
   let map = {};
   let temp = 0;
-  for(let i=0; i<9; i++) {
-    for(let j=0; j<9; j++){
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
       temp = board[i][j];
       if (temp === '.') continue;
-      if (map['i' + i + temp] || map['j' + j + temp] || map['b' + Math.floor(i/3) + Math.floor(j/3) + temp]) return false;
+      if (
+        map['i' + i + temp] ||
+        map['j' + j + temp] ||
+        map['b' + Math.floor(i / 3) + Math.floor(j / 3) + temp]
+      )
+        return false;
       map['i' + i + temp] = 1;
       map['j' + j + temp] = 1;
-      map['b' + Math.floor(i/3) + Math.floor(j/3) + temp] = 1;
+      map['b' + Math.floor(i / 3) + Math.floor(j / 3) + temp] = 1;
     }
   }
   return true;
 };
 
-console.log(isValidSudoku(board));
+// console.log(isValidSudoku(board));
