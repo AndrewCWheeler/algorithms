@@ -269,7 +269,7 @@ namespace CSharpAlgorithms
     // The final piece is to return to the first function and print the manipulated arr;
     static void RotateArray(int[] arr, int k, int l)
     {
-      for (int i = 0; i < k; i++)
+      for (int i = 0; i <= k; i++)
       {
         RotateByOne(arr, l);
       }
@@ -286,7 +286,6 @@ namespace CSharpAlgorithms
       for(int i = 0; i < l - 1; i++)
       {
         arr[i] = arr[i + 1];
-        
       }
       arr[l - 1] = temp;
     }
@@ -375,7 +374,7 @@ namespace CSharpAlgorithms
       // PrintNumbers();
       // PrintOdds();
       // PrintSum();
-      int[] array3 = new int[] {3,4,5,6};
+      int[] array3 = new int[] {1, 2, 3, 4, 5, 6, 7};
       // int[] array4 = new int[] {-9, -10, 12, -15, 20};
       // LoopArray(array3);
       // int maximum;
@@ -384,7 +383,7 @@ namespace CSharpAlgorithms
       // GetAverage(array3);
       // int[] odds = OddArray();
       // Console.Write(string.Join(", ", odds));
-      MyRotateArray(array3, 2, 4);
+      MyRotateArray(array3, 3, 7);
     }
   }
 }
