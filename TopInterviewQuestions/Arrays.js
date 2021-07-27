@@ -157,3 +157,121 @@ const singleNumber = (nums) => {
 };
 
 // console.log(singleNumber([1, 2, 4, 1, 2]));
+
+// QuickSort & Partition for Intersection of Two Arrays II (below):
+
+// HASH MAP IS FAR MORE EFFICIENT!
+
+const Partition = (arr, left = 0, right = arr.length - 1) => {
+  let pivot = right;
+  let i = left;
+
+  for (let j = left; j < right; j++) {
+    if (arr[j] <= arr[pivot]) {
+      // swap
+      [arr[j], arr[i]] = [arr[i], arr[j]];
+      i++;
+    }
+  }
+  // move the pivot
+  [arr[i], arr[pivot]] = [arr[pivot], arr[i]];
+  return i;
+};
+
+const QuickSort = (arr, left = 0, right = arr.length - 1) => {
+  if (left >= right) return arr;
+
+  let i = Partition(arr, left, right);
+  QuickSort(arr, left, i - 1);
+  return QuickSort(arr, i + 1, right);
+};
+
+var intersect = function (nums1, nums2) {
+  const Swap = (a, b) => {
+    let t = a;
+    a = b;
+    b = t;
+  };
+  nums1 = QuickSort(nums1);
+  nums2 = QuickSort(nums2);
+  let l1 = nums1.length;
+  let l2 = nums2.length;
+  if (l1 > l2) {
+    Swap(l1, l2);
+  }
+  let i = 0,
+    j = 0,
+    k = 0;
+  let results = [];
+  while (i < l1 && j < l2) {
+    if (nums1[i] < nums2[j]) {
+      i++;
+    } else if (nums1[i] > nums2[j]) {
+      j++;
+    } else {
+      results[k++] = nums1[i++];
+      j++;
+    }
+  }
+  return results;
+};
+
+const nums1 = [4, 9, 5];
+const nums2 = [9, 4, 9, 8, 4];
+
+console.log(intersect(nums1, nums2));
+
+// console.log(Array7.sort());
+// console.log(QuickSort(Array7));
+
+// Intersection of Two Arrays II
+
+// Given two integer arrays nums1 and nums2, return an array of their intersection. Each element in the result must appear as many times as it shows in both arrays and you may return the result in any order.
+
+// Example 1:
+
+// Input: nums1 = [1,2,2,1], nums2 = [2,2]
+// Output: [2,2]
+// Example 2:
+
+// Input: nums1 = [4,9,5], nums2 = [9,4,9,8,4]
+// Output: [4,9]
+// Explanation: [9,4] is also accepted.
+
+// Constraints:
+
+// 1 <= nums1.length, nums2.length <= 1000
+// 0 <= nums1[i], nums2[i] <= 1000
+
+// Follow up:
+
+// What if the given array is already sorted? How would you optimize your algorithm?
+// What if nums1's size is small compared to nums2's size? Which algorithm is better?
+// What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+
+/**
+ * @param {number[]} nums1
+ * @param {number[]} nums2
+ * @return {number[]}
+ */
+
+const IntersectII = (nums1, nums2) => {
+  const obj = {};
+  const result = [];
+  if (nums1.length > nums2.length) {
+    return IntersectII(nums2, nums1);
+  }
+  nums1.forEach((el) => {
+    if (!obj[el]) obj[el] = 0;
+    obj[el] += 1;
+  });
+  nums2.forEach((el) => {
+    if (obj[el] && obj[el] > 0) {
+      result.push(el);
+      obj[el] -= 1;
+    }
+  });
+  return result;
+};
+
+console.log(IntersectII(nums1, nums2));
