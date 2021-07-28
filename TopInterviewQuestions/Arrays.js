@@ -158,66 +158,6 @@ const singleNumber = (nums) => {
 
 // console.log(singleNumber([1, 2, 4, 1, 2]));
 
-<<<<<<< HEAD
-var items = [5, 3, 7, 6, 77, 55, 203, 2, 4, 5, 6, 4, 3, 2, 2, 9];
-function swap(items, leftIndex, rightIndex) {
-  var temp = items[leftIndex];
-  items[leftIndex] = items[rightIndex];
-  items[rightIndex] = temp;
-}
-function partition(items, left, right) {
-  var pivot = items[Math.floor((right + left) / 2)], //middle element
-    i = left, //left pointer
-    j = right; //right pointer
-  while (i <= j) {
-    while (items[i] < pivot) {
-      i++;
-    }
-    while (items[j] > pivot) {
-      j--;
-    }
-    if (i <= j) {
-      swap(items, i, j); //sawpping two elements
-      i++;
-      j--;
-    }
-  }
-  return i;
-}
-
-function quickSort(items, left, right) {
-  var index;
-  if (items.length > 1) {
-    index = partition(items, left, right); //index returned from partition
-    if (left < index - 1) {
-      //more elements on the left side of the pivot
-      quickSort(items, left, index - 1);
-    }
-    if (index < right) {
-      //more elements on the right side of the pivot
-      quickSort(items, index, right);
-    }
-  }
-  return items;
-}
-// first call to quick sort
-// var sortedArray = quickSort(items, 0, items.length - 1);
-// console.log(sortedArray);
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-const generateNums = (n) => {
-  let result = [];
-  for (let i = 0; i < n; i++) {
-    result.push(getRandomInt(125));
-  }
-  return result;
-};
-
-console.log(generateNums(24));
-=======
 // QuickSort & Partition for Intersection of Two Arrays II (below):
 
 // HASH MAP IS FAR MORE EFFICIENT!
@@ -279,7 +219,7 @@ var intersect = function (nums1, nums2) {
 const nums1 = [4, 9, 5];
 const nums2 = [9, 4, 9, 8, 4];
 
-console.log(intersect(nums1, nums2));
+// console.log(intersect(nums1, nums2));
 
 // console.log(Array7.sort());
 // console.log(QuickSort(Array7));
@@ -334,5 +274,70 @@ const IntersectII = (nums1, nums2) => {
   return result;
 };
 
-console.log(IntersectII(nums1, nums2));
->>>>>>> 0e2f5a52cffa973ba2f8be8259cc1a44d7939167
+// console.log(IntersectII(nums1, nums2));
+
+// Given a non-empty array of decimal digits representing a non-negative integer, increment one to the integer.
+
+// The digits are stored such that the most significant digit is at the head of the list, and each element in the array contains a single digit.
+
+// You may assume the integer does not contain any leading zero, except the number 0 itself.
+
+const digits = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3];
+
+const plusOne = (digits) => {
+  let i = digits.length - 1;
+  if (digits[i] !== 9) {
+    digits[i] = digits[i] + 1;
+    return digits;
+  } else {
+    while (digits[i] === 9) {
+      digits[i] = 0;
+      i--;
+    }
+    if (i === -1) {
+      digits.push(0);
+      digits[i + 1] = 1;
+      return digits;
+    }
+    digits[i] = digits[i] + 1;
+    return digits;
+  }
+};
+
+console.log(plusOne(digits));
+
+// Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+// Note that you must do this in-place without making a copy of the array.
+
+// Example 1:
+
+// Input: nums = [0,1,0,3,12]
+// Output: [1,3,12,0,0]
+
+// Example 2:
+// Input: nums = [0]
+// Output: [0]
+
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var moveZeroes = function (nums) {
+  if (nums.length <= 1) {
+    return nums;
+  }
+  let i = 0;
+  for (let j = 1; j < nums.length; j++) {
+    if (nums[i] === 0 && nums[j] !== 0) {
+      nums[i] = nums[j];
+      nums[j] = 0;
+      i++;
+    } else if (nums[i] !== 0) {
+      i++;
+    }
+  }
+  return nums;
+};
+
+console.log(moveZeroes([0, 1, 2, 0, 0, 0, 3, 4]));

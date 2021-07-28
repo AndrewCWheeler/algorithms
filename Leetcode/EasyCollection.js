@@ -288,8 +288,6 @@ var plusOne = function (digits) {
     while (digits[i] === 9) {
       digits[i] = 0;
       i--;
-      console.log(digits);
-      console.log(i);
     }
     if (i === -1) {
       digits.push(0);
@@ -300,7 +298,7 @@ var plusOne = function (digits) {
     return digits;
   }
 };
-// console.log(plusOne(digits));
+console.log(plusOne(digits));
 
 // var plusOne2 = function (digits) {
 //   return (BigInt(digits.join('')) + 1n).toString().split('');
