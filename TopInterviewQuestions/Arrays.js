@@ -132,7 +132,13 @@ const rotate = (nums, k) => {
   reverse(0, nums.length - 1); // reverse the original array;
   reverse(0, k - 1); // reverse the first part of the array, relative to k;
   reverse(k, nums.length - 1); // reverse the last part of the array, relative to k;
+  return nums;
 };
+
+const strArray = ['baz', 'bar(baz)', 'sheila'];
+const len = strArray.length;
+
+console.log(rotate(strArray, Math.floor(len / 2)));
 
 // using Set();
 const containsDuplicate = (nums) => {
