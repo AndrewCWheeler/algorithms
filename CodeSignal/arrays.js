@@ -127,8 +127,8 @@ function allLongestStrings(inputArray) {
 function commonCharacterCount(s1, s2) {
   const obj = {};
   const result = [];
-  let arr1 = s1.split('');
-  let arr2 = s2.split('');
+  let arr1 = s1.split("");
+  let arr2 = s2.split("");
   if (s1.length > s2.length) {
     return commonCharacterCount(s2, s1);
   }
@@ -144,15 +144,15 @@ function commonCharacterCount(s1, s2) {
   });
   return result.length;
 }
-const s1 = 'aabcc';
-const s2 = 'adcaa';
+const s1 = "aabcc";
+const s2 = "adcaa";
 // console.log(commonCharacterCount(s1, s2));
 
 const luckyNum1 = 1230;
 const luckyNum2 = 239017;
 
 function isLucky(n) {
-  const numArr = n.toString().split('');
+  const numArr = n.toString().split("");
   let l = numArr.length;
   let sumLeft = 0;
   let sumRight = 0;
@@ -186,8 +186,8 @@ function sortByHeight(a) {
 
 // console.log(sortByHeight(a));
 
-const str = 'foo(bar)baz(blim)';
-const str2 = 'foo(bar(baz))Blim';
+const str = "foo(bar)baz(blim)";
+const str2 = "foo(bar(baz))Blim";
 // const literalRegex = /\([^()]+\)/g;
 // const capturingRegex = /\(([^()]*)\)/g;
 // const flatRegex = /\(([^]+)\)/g;
@@ -266,16 +266,16 @@ const closingParenthRegex = /[^\)]*$/g;
 // }
 
 function reverseInParentheses(inputString) {
-  console.log('InputString: ', inputString);
+  console.log("InputString: ", inputString);
   if (inputString.match(/\([A-Za-z0-9_]*\)/)) {
     return reverseInParentheses(
       inputString.replace(
         /\([A-Za-z0-9_]*\)/,
         Array.from(
-          inputString.match(/\([A-Za-z0-9_]*\)/)[0].replace(/\(|\)/g, '')
+          inputString.match(/\([A-Za-z0-9_]*\)/)[0].replace(/\(|\)/g, "")
         )
           .reverse()
-          .join('')
+          .join("")
       )
     );
   } else return inputString;
@@ -302,7 +302,7 @@ function alternatingSums(a) {
 
 // console.log(alternatingSums(inputWeights));
 
-const picture = ['a'];
+const picture = ["a"];
 
 function addBorder(picture) {
   // value to be returned:
@@ -310,19 +310,19 @@ function addBorder(picture) {
   // function to add single stars before and after strings in the picture array
   const addStars = (str) => {
     // convert string to array:
-    let t = str.split('');
+    let t = str.split("");
     // add stars to front and back of array:
-    t.unshift('*');
-    t.push('*');
+    t.unshift("*");
+    t.push("*");
     // convert array back to string and return:
-    let r = t.join('');
+    let r = t.join("");
     return r;
   };
   // add top and bottom border of stars:
   let h = picture.length; // current "height"
   let w = picture[0].length; // current "width"
   let newWidth = w + 2; // new "width" with stars
-  let starRow = '*'.repeat(newWidth); // creates a line of stars equal to the new width
+  let starRow = "*".repeat(newWidth); // creates a line of stars equal to the new width
   framedPicture.unshift(starRow); // adds top frame
   // for as many original strings in the picture array, addStars, checking first for single item arrays:
   for (let i = 0; i < h; i++) {
@@ -357,12 +357,12 @@ function areSimilar(a, b) {
 function arrayChange(inputArray) {}
 // console.log(arrayChange([3, 4, 2, 5]));
 
-const s = 'ab12c';
-const t = '1zz456';
+const s = "ab12c";
+const t = "1zz456";
 
 function removeOneDigit(s, t) {
   let result = 0;
-  let temp = '';
+  let temp = "";
   if (s.length > t.length) {
     return removeOneDigit(t, s);
   }
@@ -374,15 +374,15 @@ function removeOneDigit(s, t) {
     if (s[i] > t[i] && m) {
       console.log(s[i], t[i]);
 
-      console.log('isNumber');
+      console.log("isNumber");
       console.log(s);
       console.log(`Before splice: ${s < t}`);
-      temp = s.split('').splice(i, 1).join();
+      temp = s.split("").splice(i, 1).join();
       console.log(temp);
       console.log(`After splice: ${s < t}`);
     } else if (s[i] < t[i] && m) {
       console.log(`Before splice: ${s < t}`);
-      t.split('').splice(t[i], 1).join();
+      t.split("").splice(t[i], 1).join();
       console.log(`After splice: ${s < t}`);
     }
   }
@@ -428,7 +428,7 @@ function removeOneDigit(s, t) {
 
 // console.log(divideArray(sampleArr));
 
-const pString = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc';
+const pString = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaabc";
 function palindromeRearranging(inputString) {
   // My Solution: works for all but the hidden test cases:
   // ********************************
@@ -582,7 +582,7 @@ function isIPv4Address(str) {
     let code = char.charCodeAt(0);
     console.log(char, code);
     if (!(code > 47 && code < 58) && !(code === 46)) {
-      console.log('Broke at isDigit');
+      console.log("Broke at isDigit");
       return false;
     }
     return true;
@@ -594,9 +594,9 @@ function isIPv4Address(str) {
   for (let i = 0; i < str.length; i++) {
     char = str[i];
     // if (char === '-') return false;
-    if (char === '.') count++;
+    if (char === ".") count++;
     if (count > 3) return false;
-    if (char === ' ') return false;
+    if (char === " ") return false;
     if (char === 0 && str[i + 1] === 0) return false;
   }
   if (!(count === 3)) return false;
@@ -608,7 +608,7 @@ function isIPv4Address(str) {
     }
   }
 
-  const arr = str.split('.');
+  const arr = str.split(".");
   let topCount = 0;
   let lowCount = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -623,7 +623,7 @@ function isIPv4Address(str) {
     }
 
     if (!(char >= 0 && char <= 255)) {
-      console.log('Broke at for loop');
+      console.log("Broke at for loop");
       return false;
     }
   }
@@ -655,7 +655,7 @@ const isIPv4Address2 = (str) => {
   }
   let count = 0;
   for (let char of str) {
-    if (char === '.') {
+    if (char === ".") {
       count++;
     }
     if (count > 3) {
@@ -809,27 +809,86 @@ console.log(
     [1, 4, 2, 0],
   ])
 );
+// starting with boxBlur[1][1];
+// let b = boxBlur;
+// let temp = 0;
 
-const minesweeper = (m) => {
-  let result = [];
-  console.log(m);
-  for (let y = 0; y < m.length; y++) {
-    let row = [];
-    for (let x = 0; x < m[y].length - 1; x++) {
-      let count = 0;
-      console.log(m[y][x]);
-      if (m[y][x + 1]) {
-        row.push(count++);
-      }
+// if(b[x-1][x-1] !== null)
+// b[x-1][x] = 4;
+// b[x-1][x+1] = 0;
+
+// b[x][x-1] = 5;
+// 6
+// b[x][x+1]
+
+const minesweeper = (matrix) => {
+  let mines = [];
+
+  const sweep = (m, y, x) => {
+    let temp = 0;
+    let l = m[y].length;
+    console.log(m[y].length);
+    if (m[y - 1] !== undefined) {
+      if (x > 0 && m[y - 1][x - 1]) temp++, console.log("830");
+      if (m[y - 1][x] !== undefined && m[y - 1][x] === true)
+        temp++, console.log("831");
+      if (m[y - 1][x + 1] !== undefined && m[y - 1][x + 1] === true)
+        temp++, console.log("832");
     }
-    console.log(row);
+    if (m[y] !== undefined) {
+      if (m[y][x - 1] !== undefined && m[y][x - 1] === true)
+        temp++, console.log("835");
+      if (m[y][x + 1] !== undefined && m[y][x + 1] === true)
+        temp++, console.log("836");
+    }
+    if (m[y + 1] !== undefined) {
+      if (m[y + 1][x - 1] !== undefined && m[y + 1][x - 1] === true)
+        temp++, console.log("839");
+      if (m[y + 1][x] !== undefined && m[y + 1][x] === true)
+        temp++, console.log("840");
+      if (m[y + 1][x + 1] !== undefined && m[y + 1][x + 1] === true)
+        temp++, console.log("841");
+    }
+    console.log(temp);
+    let final = temp;
+    temp = 0;
+    return final;
+  };
+  for (let y = 0; y < matrix.length; y++) {
+    mines[y] = [];
+    for (let x = 0; x < matrix[y].length; x++) {
+      console.log(y, x);
+      mines[y].push(sweep(matrix, y, x));
+      console.log(mines);
+      console.log(matrix);
+    }
   }
+  return mines;
 };
 
-console.log(
-  minesweeper([
-    [true, false, false],
-    [false, true, false],
-    [false, false, false],
-  ])
-);
+// console.log(
+//   minesweeper([
+//     [true, false, false, true],
+//     [false, false, true, false],
+//     [true, true, false, true],
+//   ])
+// );
+
+function arrayReplace(arr, x, y) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === x) arr[i] = y;
+  }
+  return arr;
+}
+
+// console.log(arrayReplace([1, 3, 1], 1, 2));
+
+function evenDigitsOnly(n) {
+  let arr = n.toString().split("");
+  for (let x of arr) {
+    if (x % 2 !== 0) return false;
+  }
+  return true;
+}
+
+console.log(evenDigitsOnly(6428086));
