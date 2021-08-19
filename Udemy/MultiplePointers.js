@@ -11,20 +11,19 @@
 // Return an array that includes both values that sum to zero or undefined if a pair does not exist.
 
 // @slow @naive @working @inefficient
-function sumZero(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] + arr[j] === 0) {
-        return [arr[i], arr[j]];
-      }
-    }
-  }
-}
+// function sumZero(arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[i] + arr[j] === 0) {
+//         return [arr[i], arr[j]];
+//       }
+//     }
+//   }
+// }
 
-console.log(sumZero([-4, -3, -2, -1, 0, 1, 2, 5]));
+// console.log(sumZero([-4, -3, -2, -1, 0, 1, 2, 5]));
 
-// @working @correct @efficient
-const sumZero2 = (arr) => {
+const sumZero = (arr) => {
   let i = 0,
     j = arr.length - 1;
   while (i < j) {
@@ -32,6 +31,8 @@ const sumZero2 = (arr) => {
     else arr[i] + arr[j] > 0 ? j-- : i++;
   }
 };
+console.log(sumZero([-4, -3, -2, -1, 0, 1, 2, 5]));
+// expected output: [-2, 2]
 
 const createArr = (n) => {
   let result = [];
