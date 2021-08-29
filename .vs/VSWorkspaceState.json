@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CodeSignal"
+    "\\CodeSignal",
+    "\\Udemy"
   ],
-  "SelectedNode": "\\CodeSignal\\removeEachKth.js",
+  "SelectedNode": "\\CodeSignal\\arrayMaxConsecutiveSum.js",
   "PreviewInSolutionExplorer": false
 }
