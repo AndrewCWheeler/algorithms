@@ -20,4 +20,4 @@ const isBeautifulString = (str) => {
 }
 
 console.log(isBeautifulString("aabbcddd")) // false;
-console.log(isBeautifulString("aabbcc")) 
+console.log(isBeautifulString("aabbcc")) // true;
