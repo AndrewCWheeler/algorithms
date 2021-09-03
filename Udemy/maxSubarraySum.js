@@ -1,4 +1,4 @@
-// 33: Sliding Window Pattern
+// 33: Sliding Window Pattern - maxSubarraySum
 
 // This pattern involves creating a window which can either be an array or number from one position to another.
 
@@ -14,16 +14,15 @@
 
 // @correct @working @efficient
 const maxSubarraySum = (arr, num) => {
-    let maxSum = 0;
-    let tempSum = 0;
     if (arr.length < num) return null;
-    for (let i = 0; i < num; i++){
+    let maxSum = 0;
+    for (let i = 0; i < num; i++) {
         maxSum += arr[i];
     }
-    tempSum = maxSum;
-    for (let i = num - 1; i < arr.length; i++){
-        tempSum = tempSum - arr[i-num] + arr[i];
-        maxSum = Math.max(maxSum, tempSum);
+    let currentMax = maxSum;
+    for (let i = num; i < arr.length; i++) {
+        currentMax += arr[i] - arr[i - num];
+        maxSum = Math.max(maxSum, currentMax);
     }
     return maxSum;
 }
