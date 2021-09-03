@@ -866,13 +866,13 @@ const minesweeper = (matrix) => {
   return mines;
 };
 
-// console.log(
-//   minesweeper([
-//     [true, false, false, true],
-//     [false, false, true, false],
-//     [true, true, false, true],
-//   ])
-// );
+console.log(
+  minesweeper([
+    [true, false, false, true],
+    [false, false, true, false],
+    [true, true, false, true],
+  ])
+);
 
 function arrayReplace(arr, x, y) {
   for (let i = 0; i < arr.length; i++) {
