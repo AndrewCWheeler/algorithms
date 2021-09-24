@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CSharpConsole"
   ],
-  "SelectedNode": "\\CodeSignal",
+  "SelectedNode": "\\CSharpConsole\\Program.cs",
   "PreviewInSolutionExplorer": false
 }
