@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\v-awheeler\\source\\repos\\algorithms\\CSharpConsole\\CSharpConsole.csproj",
+      "projectUniqueName": "C:\\Users\\v-awheeler\\Source\\Repos\\algorithms\\CSharpConsole\\CSharpConsole.csproj",
       "projectName": "CSharpConsole",
-      "projectPath": "C:\\Users\\v-awheeler\\source\\repos\\algorithms\\CSharpConsole\\CSharpConsole.csproj",
+      "projectPath": "C:\\Users\\v-awheeler\\Source\\Repos\\algorithms\\CSharpConsole\\CSharpConsole.csproj",
       "packagesPath": "C:\\Users\\v-awheeler\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\v-awheeler\\source\\repos\\algorithms\\CSharpConsole\\obj\\",
+      "outputPath": "C:\\Users\\v-awheeler\\Source\\Repos\\algorithms\\CSharpConsole\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\v-awheeler\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -60,7 +60,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21458.32\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100-rc.1.21463.6\\RuntimeIdentifierGraph.json"
       }
     }
   }
