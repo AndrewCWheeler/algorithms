@@ -8,7 +8,7 @@
 
 // Example 1:
 
-const string1 = ['h', 'e', 'p', 'z', 'o', '1'];
+const string1 = ['h', 'e', 'l', 'l', 'o'];
 // Output: ["o","l","l","e","h"]
 // Example 2:
 
@@ -54,7 +54,7 @@ var reverseString = function (s) {
 // Input: x = 0
 // Output: 0
 
-const reverse = x => {
+const reverse = (x) => {
   x = x + '';
   let arrX = x.split('');
   if (x[0] === '-') {
@@ -90,7 +90,7 @@ const reverse = x => {
 
 s = 'loveleetcode';
 
-const firstUniqChar = s => {
+const firstUniqChar = (s) => {
   const obj = {};
   for (let i = 0; i < s.length; i++) {
     if (obj.hasOwnProperty(s[i])) {
@@ -109,7 +109,7 @@ const firstUniqChar = s => {
 // console.log(firstUniqChar(s));
 
 // const firstUniqChar2 = s => {
-const firstUniqChar2 = s => {
+const firstUniqChar2 = (s) => {
   for (let i = 0; i < s.length; i++) {
     let char = s.charAt(i);
     if (s.indexOf(char) === s.lastIndexOf(char)) {
@@ -161,7 +161,7 @@ var isAnagram2 = function (s, t) {
   if (s.length !== t.length) {
     return false;
   }
-  const stringToObj = str => {
+  const stringToObj = (str) => {
     let obj = {};
     for (let i = 0; i < str.length; i++) {
       if (obj[str[i]] === undefined) {
@@ -297,7 +297,7 @@ const str7 = '3.14159';
 // 0 <= s.length <= 200
 // s consists of English letters (lower-case and upper-case), digits, ' ', '+', '-' and '.'.
 
-const myAtoi = s => {
+const myAtoi = (s) => {
   if (s === '') {
     return 0;
   }
@@ -313,10 +313,10 @@ const myAtoi = s => {
   let negOrPos = s.match(/-+\b\w+\b/g || /++\b\w+\b/g);
   let arr = s.match(/\b\w+\b/g);
   let result = 0;
-  const valueIsNaN = v => {
+  const valueIsNaN = (v) => {
     return v !== v;
   };
-  const legitimate = n => {
+  const legitimate = (n) => {
     let lowest = Math.pow(-2, 31);
     let highest = Math.pow(2, 31) - 1;
     if (n > lowest && n < highest) {
@@ -355,7 +355,7 @@ const myAtoi = s => {
 
 // console.log(myAtoi(str7));
 
-const myAtoi2 = str => {
+const myAtoi2 = (str) => {
   let i = 0;
   let sign = 1;
   let res = 0;
@@ -381,7 +381,7 @@ const myAtoi2 = str => {
 
 console.log(myAtoi2(str1));
 
-const myAtoi3 = s => {
+const myAtoi3 = (s) => {
   let z = s.trim().split(new RegExp(/^[a-zA-Z\s].*?./g));
   let k = parseInt(z.join(''));
 

@@ -10,5 +10,5 @@ const isPalindrome = (str) => {
     return isPalindrome(str.slice(1, str.length - 1));
   } else return false;
 };
-console.log(isPalindrome('tacocat'));
-console.log(isPalindrome('awesome'));
+console.log(isPalindrome('tacocat')); // true
+console.log(isPalindrome('awesome')); // false
