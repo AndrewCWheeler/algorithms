@@ -13,12 +13,10 @@ class SLList {
   }
   push(val) {
     var newNode = new Node(val);
-    console.log(this.length, val, newNode);
     if (!this.head) {
       this.head = newNode;
       this.tail = this.head;
     } else {
-      console.log(`head: ${this.head.val}, tail: ${this.tail.val}`);
       this.tail.next = newNode;
       this.tail = this.tail.next;
     }
@@ -28,6 +26,11 @@ class SLList {
 
   pop() {
     if (!this.head) {
+      return this;
+    } else if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length--;
       return this;
     } else {
       let walker = this.head;
@@ -42,11 +45,27 @@ class SLList {
       return this;
     }
   }
+
+  shift() {
+    if (!this.head) {
+      return this;
+    } else if (this.length === 1) {
+      this.head = null;
+      this.tail = null;
+      this.length--;
+      return this;
+    } else {
+      let removedNode = this.head;
+      this.head = this.head.next;
+      this.length--;
+      return removedNode;
+    }
+  }
 }
 
 let first = new SLList(3);
 first.push(3);
-first.push(4);
-first.push(5);
 
+console.log(first);
 console.log(first.pop());
+console.log(first);
