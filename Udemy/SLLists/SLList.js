@@ -74,12 +74,34 @@ class SLList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    var counter = 0;
+    var current = this.head;
+    while (counter !== index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
+
+  set(index, val) {
+    let foundNode = this.get(index);
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 let first = new SLList(3);
 first.push(3);
 first.push(5);
-
-console.log(first);
+first.push(7);
 first.unshift(1);
+
+console.log(first.get(1));
+console.log(first.set(1, 100));
 console.log(first);
