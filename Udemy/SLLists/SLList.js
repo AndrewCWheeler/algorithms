@@ -61,11 +61,25 @@ class SLList {
       return removedNode;
     }
   }
+
+  unshift(val) {
+    var newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 let first = new SLList(3);
 first.push(3);
+first.push(5);
 
 console.log(first);
-console.log(first.pop());
+first.unshift(1);
 console.log(first);
