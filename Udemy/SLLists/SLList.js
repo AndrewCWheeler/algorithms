@@ -94,6 +94,57 @@ class SLList {
     }
     return false;
   }
+
+  insert(index, val) {
+    if (index < 0 || index > this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+
+    var newNode = new Node(val);
+    var prev = this.get(index - 1);
+    var temp = prev.next;
+    prev.next = newNode;
+    newNode.next = temp;
+    this.length++;
+    return true;
+  }
+
+  remove(index) {
+    var nodeToRemove = this.get(index);
+    if (index < 0 || index >= this.length) return undefined;
+    if (index === 0) return this.shift();
+    if (index === this.length - 1) return this.pop();
+
+    var prev = this.get(index - 1);
+    prev.next = nodeToRemove.next;
+    this.length--;
+    return nodeToRemove;
+  }
+
+  reverse() {
+    var node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+    var prev = null;
+    var next;
+    for (var i = 0; i < this.length; i++) {
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+    return this;
+  }
+
+  print() {
+    var arr = [];
+    var current = this.head;
+    while (current) {
+      arr.push(current.val);
+      current = current.next;
+    }
+    return arr;
+  }
 }
 
 let first = new SLList(3);
@@ -103,5 +154,11 @@ first.push(7);
 first.unshift(1);
 
 console.log(first.get(1));
-console.log(first.set(1, 100));
 console.log(first);
+
+console.log(first.insert(1, 10));
+console.log(first);
+first.remove(1);
+console.log(first.print());
+first.reverse();
+console.log(first.print());
