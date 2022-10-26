@@ -65,6 +65,19 @@ class DLList {
     this.length--;
     return oldHead;
   }
+  unshift(val) {
+    var newNode = new Node(val);
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = newNode;
+    } else {
+      newNode.next = this.head;
+      this.head.prev = newNode;
+      this.head = newNode;
+    }
+    this.length++;
+    return this;
+  }
 }
 
 const first = new DLList();
@@ -78,4 +91,10 @@ console.log(first.pop());
 console.log(first.print());
 console.log("first.shift():");
 console.log(first.shift());
+console.log(first.print());
+first.push(4);
+first.push(5);
+console.log(first.print());
+console.log("first.unshift(0):");
+first.unshift(0);
 console.log(first.print());
