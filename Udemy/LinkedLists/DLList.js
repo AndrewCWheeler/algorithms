@@ -78,6 +78,27 @@ class DLList {
     this.length++;
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return undefined;
+    var count, current;
+    if (index <= this.length / 2) {
+      count = 0;
+      current = this.head;
+      while (count !== index) {
+        current = current.next;
+        count++;
+      }
+    } else {
+      count = this.length - 1;
+      current = this.tail;
+      while (count !== index) {
+        current = current.prev;
+        count--;
+      }
+    }
+    return current;
+  }
 }
 
 const first = new DLList();
@@ -98,3 +119,4 @@ console.log(first.print());
 console.log("first.unshift(0):");
 first.unshift(0);
 console.log(first.print());
+console.log(first.get(2));
