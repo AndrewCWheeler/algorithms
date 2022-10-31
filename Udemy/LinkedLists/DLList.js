@@ -99,6 +99,14 @@ class DLList {
     }
     return current;
   }
+  set(index, val) {
+    var nodeToSet = this.get(index);
+    if (nodeToSet) {
+      nodeToSet.val = val;
+      return true;
+    }
+    return false;
+  }
 }
 
 const first = new DLList();
@@ -120,3 +128,5 @@ console.log("first.unshift(0):");
 first.unshift(0);
 console.log(first.print());
 console.log(first.get(2));
+console.log(first.set(2, 3));
+console.log(first.print());
