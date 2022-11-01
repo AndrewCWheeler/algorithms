@@ -107,6 +107,21 @@ class DLList {
     }
     return false;
   }
+
+  insert(index, val) {
+    if (index < 0 || index >= this.length) return false;
+    if (index === 0) return !!this.unshift(val);
+    if (index === this.length) return !!this.push(val);
+    var a = this.get(index - 1);
+    var b = new Node(val);
+    var c = a.next;
+    c.prev = b;
+    a.next = b;
+    b.prev = a;
+    b.next = c;
+    this.length++;
+    return true;
+  }
 }
 
 const first = new DLList();
@@ -130,3 +145,6 @@ console.log(first.print());
 console.log(first.get(2));
 console.log(first.set(2, 3));
 console.log(first.print());
+first.insert(2, 1);
+console.log(first.print());
+console.log(first);
