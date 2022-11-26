@@ -35,6 +35,21 @@ class BST {
       }
     }
   }
+  contains(val) {
+    if (this.root === null) return false;
+    var current = this.root,
+      found = false;
+    while (current && !found) {
+      if (val < current.val) {
+        current = current.left;
+      } else if (val > current.val) {
+        current = current.right;
+      } else {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 var tree = new BST();
@@ -45,6 +60,7 @@ tree.insert(4);
 tree.insert(3);
 tree.insert(10);
 
-console.log(tree);
-
-console.log(tree.right);
+console.log(tree.contains(3));
+console.log(tree.contains(2));
+console.log(tree.contains(11));
+console.log(tree.contains(5));
