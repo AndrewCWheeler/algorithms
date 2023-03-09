@@ -42,6 +42,7 @@ const same = (arr1, arr2) => {
   for (let val of arr1) {
     obj1[val] = (obj1[val] || 0) + 1;
   }
+  console.log(obj1);
   for (let val of arr2) {
     obj2[val] = (obj2[val] || 0) + 1;
   }
@@ -58,7 +59,7 @@ const same = (arr1, arr2) => {
   return true;
 };
 
-// console.log(same([1, 2, 3], [1, 4, 9]));
+console.log(same([1, 2, 3], [1, 4, 9]));
 
 // ANAGRAMS
 
@@ -83,4 +84,4 @@ const validAnagram = (str1, str2) => {
   return true;
 };
 
-console.log(validAnagram('carc', 'crac'));
+console.log(validAnagram("carc", "crac"));
