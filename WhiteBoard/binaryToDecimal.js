@@ -1,5 +1,5 @@
 const binaryToDecimal = (n) => {
-  let binaryArray = n.toString().split("");
+  let binaryArray = n.toString().split('');
   let binaryLength = binaryArray.length - 1;
   let decimal = 0;
   for (let i = 0; i < binaryArray.length; i++) {
@@ -13,4 +13,8 @@ const binaryToDecimal = (n) => {
   return decimal;
 };
 
-console.log(binaryToDecimal(1111111111)); // 1023
+let a = binaryToDecimal(1110);
+let b = binaryToDecimal(101);
+let c = a * b;
+
+console.log(c);

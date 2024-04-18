@@ -59,7 +59,7 @@ const same = (arr1, arr2) => {
   return true;
 };
 
-console.log(same([1, 2, 3], [1, 4, 9]));
+console.log(same([1, 2, 2, 3], [1, 4, 4, 9]));
 
 // ANAGRAMS
 
@@ -84,4 +84,4 @@ const validAnagram = (str1, str2) => {
   return true;
 };
 
-console.log(validAnagram("carc", "crac"));
+console.log(validAnagram('carc', 'crac'));

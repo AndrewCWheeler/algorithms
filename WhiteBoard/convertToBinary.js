@@ -1,7 +1,7 @@
-const toBinary = (n) => {
+const convertToBinary = (n) => {
   // handle edge cases; return 0 if n is 0 and only allow whole numbers:
   if (n === 0) return 0;
-  if (!Number.isInteger(n)) return "Only Integers currently allowed!";
+  if (!Number.isInteger(n)) return 'Only Integers currently allowed!';
 
   // final function to return; assembles an array of 1's and 0's based on
   // the result of n reduced by the next sequential power of 2
@@ -14,7 +14,7 @@ const toBinary = (n) => {
       } else binaryArray.push(0);
     }
     binaryArray[0] === 0 ? binaryArray.shift() : null;
-    let results = binaryArray.join("");
+    let results = binaryArray.join('');
     return results;
   };
 
@@ -33,4 +33,8 @@ const toBinary = (n) => {
   return writeBinary(digitalLength);
 };
 
-console.log(toBinary(13)); // 1011
+// console.log(toBinary(37));
+
+// console.log(390 % 16);
+
+console.log(convertToBinary(70));

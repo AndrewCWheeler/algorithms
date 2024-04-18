@@ -1,7 +1,7 @@
 // Reverse a string in place.
 
 const reverseString = (str) => {
-  let arr = str.split("");
+  let arr = str.split('');
 
   let left = 0;
   let right = arr.length - 1;
@@ -12,11 +12,11 @@ const reverseString = (str) => {
     left++;
     right--;
   }
-  let result = arr.join("");
+  let result = arr.join('');
   return result;
 };
 
-console.log(reverseString("apple"));
+console.log(reverseString('apple'));
 
 const objects = [
   { key: 1, val: 4 },
@@ -28,4 +28,16 @@ const objects = [
 
 const sorted = objects.sort((a, b) => a.val - b.val);
 
-console.log(sorted);
+// console.log(sorted);
+
+const reverseStringsInPlace = (str) => {
+  let words = str.split(' ');
+  let arr = [];
+  for (let i = 0; i < words.length; i++) {
+    arr.push(reverseString(words[i]));
+  }
+  let newString = arr.join(' ');
+  return newString;
+};
+
+console.log(reverseStringsInPlace('cit cat eot'));

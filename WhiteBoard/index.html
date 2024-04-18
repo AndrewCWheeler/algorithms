@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Shades</title>
+  <style>
+    .color-square {
+      width: 50px;
+      height: 50px;
+      margin: 5px;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    function lightenOrDarken(hex, darkness) {
+      // The same lightenOrDarken function from your previous code
+
+      let r = parseInt(hex.substring(1, 3), 16);
+      let g = parseInt(hex.substring(3, 5), 16);
+      let b = parseInt(hex.substring(5, 7), 16);
+
+      r = Math.max(0, Math.min(255, r - darkness));
+      g = Math.max(0, Math.min(255, g - darkness));
+      b = Math.max(0, Math.min(255, b - darkness));
+
+      return `#${(1 << 24 | r << 16 | g << 8 | b).toString(16).slice(1)}`;
+    }
+
+    function generateShades(initialHex, n, variation) {
+      initialHex = initialHex.toUpperCase();
+      const shades = [];
+      let step = (255 / (n - 1)) * (variation / 10);
+
+      for (let i = 0; i < n - 1; i++) {
+        const darkness = (n - i - 1) * step;
+        let shade = lightenOrDarken(initialHex, darkness);
+
+        while (shades.includes(shade) || shade === initialHex) {
+          shade = lightenOrDarken(initialHex, darkness + step);
+          step += 1;
+        }
+
+        shades.push(shade);
+        step = (255 / (n - 1)) * (variation / 10);
+      }
+
+      shades.push(initialHex);
+      return shades;
+    }
+
+    const initialHex = "#FF0000";
+    const numberOfShades = 10;
+    const variation = 7;
+    const shadesArray = generateShades(initialHex, numberOfShades, variation);
+
+    // Create colored squares and append them to the body
+    shadesArray.forEach(shade => {
+      const square = document.createElement("div");
+      square.classList.add("color-square");
+      square.style.backgroundColor = shade;
+      document.body.appendChild(square);
+    });
+  </script>
+</body>
+</html>
